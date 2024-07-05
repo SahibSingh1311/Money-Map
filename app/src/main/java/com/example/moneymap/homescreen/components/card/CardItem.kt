@@ -22,7 +22,10 @@ import com.example.moneymap.R
 import com.example.moneymap.ui.theme.GreenTheme
 
 @Composable
-fun CardItem(modifier: Modifier) {
+fun CardItem(expense: String,
+             income: String,
+             balance: String,
+             modifier: Modifier) {
     Column(
         modifier = modifier
             .padding(16.dp)
@@ -43,7 +46,7 @@ fun CardItem(modifier: Modifier) {
                     color = Color.White
                 )
                 Text(
-                    text = "$ 10,000",
+                    text = balance,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
@@ -63,13 +66,13 @@ fun CardItem(modifier: Modifier) {
 
             CardRowItem(
                 title = "Income",
-                amount = "$ 4,500",
+                amount = income,
                 icon = R.drawable.ic_income,
                 modifier = Modifier.align(Alignment.CenterStart)
             )
             CardRowItem(
                 title = "Expense",
-                amount = "$ 1,500",
+                amount = expense,
                 icon = R.drawable.ic_expense,
                 modifier = Modifier.align(Alignment.CenterEnd)
             )
