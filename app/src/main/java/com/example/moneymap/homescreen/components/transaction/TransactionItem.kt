@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -39,7 +40,7 @@ fun TransactionItem(
             )
             Spacer(modifier = Modifier.size(8.dp))
             Column {
-                Text(text = title, fontSize = 16.sp)
+                Text(text = title, fontSize = 16.sp, fontWeight = FontWeight.Medium)
                 Text(text = date, fontSize = 12.sp)
             }
         }
@@ -47,6 +48,7 @@ fun TransactionItem(
             text = amount,
             fontSize = 20.sp,
             color = color,
+            fontWeight = FontWeight.SemiBold,
             modifier = Modifier.align(Alignment.CenterEnd)
         )
     }
