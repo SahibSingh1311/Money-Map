@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.moneymap.R
+import com.example.moneymap.Utils
 import com.example.moneymap.data.ExpenseDataBase
 import com.example.moneymap.data.dao.ExpenseDao
 import com.example.moneymap.data.model.ExpenseCategory
@@ -22,7 +23,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
                 total -= it.amount
             }
         }
-        return "$ $total"
+        return "$ ${Utils.formatToDecimalValue(total)}"
     }
 
     fun getTotalExpense(list: List<ExpenseEntity>): String {
@@ -32,7 +33,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
                 expense += it.amount
             }
         }
-        return "$ $expense"
+        return "$ ${Utils.formatToDecimalValue(expense)}"
     }
 
     fun getTotalIncome(list: List<ExpenseEntity>): String {
@@ -42,12 +43,12 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
                 income += it.amount
             }
         }
-        return "$ $income"
+        return "$ ${Utils.formatToDecimalValue(income)}"
     }
 
     fun getItemIcon(item: ExpenseEntity): Int {
-        when(item.category){
-            ExpenseCategory.FOOD-> return R.drawable.food
+        when (item.category) {
+            ExpenseCategory.FOOD -> return R.drawable.food
             ExpenseCategory.TRANSPORTATION -> return R.drawable.transportation
             ExpenseCategory.HOUSING -> return R.drawable.housing
             ExpenseCategory.ENTERTAINMENT -> return R.drawable.entertainment
@@ -61,15 +62,14 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
             ExpenseCategory.INSURANCE -> return R.drawable.insurance
             ExpenseCategory.INCOME -> return R.drawable.income
             else -> return R.drawable.miscellaneous
-
         }
     }
 }
 
-class HomeViewModelFactory(private val context: Context): ViewModelProvider.Factory{
+class HomeViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(HomeViewModel::class.java)){
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             val dao = ExpenseDataBase.getDatabase(context).expenseDao()
 
             @Suppress("UNCHECKED_CAST")

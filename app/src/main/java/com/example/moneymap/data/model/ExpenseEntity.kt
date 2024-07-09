@@ -12,8 +12,8 @@ data class ExpenseEntity(
     val title: String,
     @ColumnInfo(name = "amount")
     val amount: Double,
-    @ColumnInfo(name = "daate")
-    val date: Long,
+    @ColumnInfo(name = "date")
+    val date: String,
     @ColumnInfo(name = "category")
     val category: ExpenseCategory,
     @ColumnInfo(name = "type")

@@ -45,7 +45,7 @@ fun TransactionItem(
             }
         }
         Text(
-            text = amount,
+            text = "$$amount",
             fontSize = 20.sp,
             color = color,
             fontWeight = FontWeight.SemiBold,
